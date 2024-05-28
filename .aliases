@@ -13,7 +13,7 @@ alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
-alias g="git"
+
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -103,7 +103,7 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # URL-encode strings
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+alias urlencode='python -c "import sys, urllib as ul; print(ul.quote_plus(sys.argv[1]));"'
 
 # Merge PDF files, preserving hyperlinks
 # Usage: `mergepdf input{1,2,3}.pdf`
@@ -154,10 +154,57 @@ alias create-venv="python4 -m venv .venv"
 alias venv="source .venv/bin/activate"
 alias jnb="jupyter notebook"
 alias poetry-bump="poetry version patch && poetry publish -r edgeops --build && pip install --upgrade edgeopsdk"
-alias dotfiles='git --git-dir=/Users/aherna/.dotfiles/ --work-tree=/'
 alias tssh='tsh ssh'
 alias tub='tsh ssh ubh1-us1'
 alias tubp='tsh ssh -D 9999 ubh1-us1'
 alias poetry='PYTHONPATH=$(pwd) poetry'
 alias pytest='pwd && PYTHONPATH=$(pwd)/src pytest'
 alias cyberark=~/cyberark-alias
+
+
+
+
+#########
+#  GIT  #
+#########
+
+function current_branch() {
+  git_current_branch
+}
+
+# Check for develop and similarly named branches
+function git_develop_branch() {
+  command git rev-parse --git-dir &>/dev/null || return
+  local branch
+  for branch in dev devel develop development; do
+    if command git show-ref -q --verify refs/heads/$branch; then
+      echo $branch
+      return 0
+    fi
+  done
+
+  echo develop
+  return 1
+}
+
+# Check if main exists and use instead of master
+function git_main_branch() {
+  command git rev-parse --git-dir &>/dev/null || return
+  local ref
+  for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk,mainline,default,stable,master}; do
+    if command git show-ref -q --verify $ref; then
+      echo ${ref:t}
+      return 0
+    fi
+  done
+
+  # If no main branch was found, fall back to master but return error
+  echo master
+  return 1
+}
+
+alias g="git"
+alias gst="git status -s"
+alias gd="git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+alias ggpull='git pull origin "$(git_current_branch)"'
+alias ggpush='git push origin "$(git_current_branch)"'
