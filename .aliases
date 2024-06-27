@@ -154,6 +154,8 @@ alias create-venv="python4 -m venv .venv"
 alias venv="source .venv/bin/activate"
 alias jnb="jupyter notebook"
 alias poetry-bump="poetry version patch && poetry publish -r edgeops --build && pip install --upgrade edgeopsdk"
+alias tnpl='tsh login --proxy=teleport.vmware-nonprod.net:443 --auth=Okta'
+alias tpl='tsh login --proxy=teleport.vmware-prod.net:443 --auth=Okta'
 alias tssh='tsh ssh'
 alias tub='tsh ssh ubh1-us1'
 alias tubp='tsh ssh -D 9999 ubh1-us1'
@@ -162,49 +164,13 @@ alias pytest='pwd && PYTHONPATH=$(pwd)/src pytest'
 alias cyberark=~/cyberark-alias
 
 
-
-
 #########
 #  GIT  #
 #########
 
-function current_branch() {
-  git_current_branch
-}
-
-# Check for develop and similarly named branches
-function git_develop_branch() {
-  command git rev-parse --git-dir &>/dev/null || return
-  local branch
-  for branch in dev devel develop development; do
-    if command git show-ref -q --verify refs/heads/$branch; then
-      echo $branch
-      return 0
-    fi
-  done
-
-  echo develop
-  return 1
-}
-
-# Check if main exists and use instead of master
-function git_main_branch() {
-  command git rev-parse --git-dir &>/dev/null || return
-  local ref
-  for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk,mainline,default,stable,master}; do
-    if command git show-ref -q --verify $ref; then
-      echo ${ref:t}
-      return 0
-    fi
-  done
-
-  # If no main branch was found, fall back to master but return error
-  echo master
-  return 1
-}
-
 alias g="git"
 alias gst="git status -s"
-alias gd="git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-alias ggpull='git pull origin "$(git_current_branch)"'
-alias ggpush='git push origin "$(git_current_branch)"'
+alias gd="git diff"
+alias gpor="git pull origin \$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') --rebase"
+alias ggpull='git pull origin "$(git rev-parse --abbrev-ref HEAD)"'
+alias ggpush='git push origin "$(git rev-parse --abbrev-ref HEAD)"'
