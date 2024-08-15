@@ -1,4 +1,4 @@
 #!/bin/bash
 
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 # eval "$(direnv hook zsh)"
