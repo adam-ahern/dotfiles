@@ -81,6 +81,7 @@ brew install xz
 # Install other useful binaries.
 brew install ack
 #brew install exiv2
+brew install freerdp
 brew install git
 brew install git-lfs
 brew install git-delta

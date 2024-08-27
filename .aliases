@@ -150,7 +150,7 @@ alias path='echo -e ${PATH//:/\\n}'
 
 alias orion="ssh -i ~/.ssh/kp-327841341725.pem ubuntu@34.239.27.122"
 alias k3-master='ssh -i ~/.ssh/kp-327841341725.pem ubuntu@54.235.23.189'
-alias create-venv="python4 -m venv .venv"
+alias create-venv="python3 -m venv .venv"
 alias venv="source .venv/bin/activate"
 alias jnb="jupyter notebook"
 alias poetry-bump="poetry version patch && poetry publish -r edgeops --build && pip install --upgrade edgeopsdk"
@@ -162,7 +162,7 @@ alias tubp='tsh ssh -D 9999 ubh1-us1'
 alias poetry='PYTHONPATH=$(pwd) poetry'
 alias pytest='pwd && PYTHONPATH=$(pwd)/src pytest'
 alias cyberark=~/cyberark-alias
-
+alias playroom='rdp gs\Administrator VMware123! 10.226.104.88'
 
 #########
 #  GIT  #
