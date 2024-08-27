@@ -162,7 +162,7 @@ alias tubp='tsh ssh -D 9999 ubh1-us1'
 alias poetry='PYTHONPATH=$(pwd) poetry'
 alias pytest='pwd && PYTHONPATH=$(pwd)/src pytest'
 alias cyberark=~/cyberark-alias
-alias playroom='rdp gs\Administrator VMware123! 10.226.104.88'
+alias playroom='rdp 10.226.104.88'
 
 #########
 #  GIT  #

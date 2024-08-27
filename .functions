@@ -1,21 +1,18 @@
 #!/usr/bin/env bash
 
-rdp() {
+# transfer.sh command
+transfer(){ if [ $# -eq 0 ];then echo "No arguments specified.\nUsage:\n transfer <file|directory>\n ... | transfer <file_name>">&2;return 1;fi;if tty -s;then file="$1";file_name=$(basename "$file");if [ ! -e "$file" ];then echo "$file: No such file or directory">&2;return 1;fi;if [ -d "$file" ];then file_name="$file_name.zip" ,;(cd "$file"&&zip -r -q - .)|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null,;else cat "$file"|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;else file_name=$1;curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;}
+
+function rdp() {
     if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
         echo 'Usage: rdp USER PASSWORD ADDRESS
     '
         exit
     fi
 
-    USER=$1
-    PASSWORD=$2
-    ADDRESS=$3
-
-    xfreerdp /u:$USER /p:$PASSWORD /v:$ADDRESS
+    xfreerdp /d:gslabs.local /u:administrator /p:VMware123! /dynamic-resolution /v:$1
+    # Requires XQuartz to be installed on Mac
 }
-
-# transfer.sh command
-transfer(){ if [ $# -eq 0 ];then echo "No arguments specified.\nUsage:\n transfer <file|directory>\n ... | transfer <file_name>">&2;return 1;fi;if tty -s;then file="$1";file_name=$(basename "$file");if [ ! -e "$file" ];then echo "$file: No such file or directory">&2;return 1;fi;if [ -d "$file" ];then file_name="$file_name.zip" ,;(cd "$file"&&zip -r -q - .)|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null,;else cat "$file"|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;else file_name=$1;curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;}
 
 # Create a new directory and enter it
 function mkd() {
