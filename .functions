@@ -8,6 +8,10 @@ function rdp() {
     # Requires XQuartz to be installed on Mac
 }
 
+function prompt() {
+    curl -Ss http://localhost:11434/api/generate -d '{"model": "llama3.1", "prompt": "'"$1"'", "stream": false}' | jq -r '.response'
+}
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";
