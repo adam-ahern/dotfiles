@@ -163,6 +163,7 @@ alias poetry='PYTHONPATH=$(pwd) poetry'
 alias pytest='pwd && PYTHONPATH=$(pwd)/src pytest'
 alias cyberark=~/cyberark-alias
 alias playroom='rdp 10.226.104.88'
+alias rot13='tr "A-Za-z" "N-ZA-Mn-za-m"'
 
 #########
 #  GIT  #
