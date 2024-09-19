@@ -1,9 +1,3 @@
-Host gss-csp*
-	IdentityFile ~/.ssh/id_rsa
-
-Host vcenter-*, nsxmgr-*
-	PubkeyAuthentication=no
-
 Host gitlab.eng.vmware.com
 	IdentityFile ~/.ssh/id_rsa
 
@@ -13,26 +7,7 @@ Host github.gwd.broadcom.net
 
 Host vcf-csp.acc.broadcom.net
     User aa000650
-    PubkeyAuthentication=No
-    PasswordAuthentication=yes
-    PreferredAuthentications=keyboard-interactive,password
-
-# Added by Krypton
-#Host *
-#     IdentityAgent ~/.kr/krd-agent.sock
-#     ProxyCommand /usr/local/bin/krssh %h %p
-#     IdentityFile ~/.ssh/id_krypton
-#     IdentityFile ~/.ssh/id_rsa
-
-Host pci-bastion
-  HostName 52.5.5.158
-  ProxyCommand none
-  ForwardAgent yes
-
-Host prod-bastion
-  HostName 54.67.58.131
-  ProxyCommand none
-  ForwardAgent yes
+    IdentityFile ~/.ssh/script_server
 
 Host gitlab.com
 	IdentityFile ~/.ssh/gitlab-personal
@@ -40,12 +15,7 @@ Host gitlab.com
 Host github.com
 	IdentityFile ~/.ssh/github-personal
 
-Host 54.171.197.240
-    HostName 54.171.197.240
-    User ubuntu
-    IdentityFile ~/.ssh/aws_dev_key
-
-Host *.tp-p-us-w-2 teleport-nlb.vmware-prod.net vco* vcg*
+  Host *.tp-p-us-w-2 teleport-nlb.vmware-prod.net vco* vcg*
     UserKnownHostsFile "/Users/aherna/.tsh/known_hosts"
     IdentityFile "/Users/aherna/.tsh/keys/teleport.vmware-prod.net/aherna@vmware.com"
     CertificateFile "/Users/aherna/.tsh/keys/teleport.vmware-prod.net/aherna@vmware.com-ssh/tp-p-us-w-2-cert.pub"

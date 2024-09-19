@@ -36,15 +36,7 @@ export GPG_TTY=$(tty);
 # Hide the “default interactive shell is now zsh” warning on macOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1;
 
-
-# Extend history
-# export HISTFILE=~/.zsh_history
-# export HISTFILESIZE=1000000000
-# export HISTSIZE=1000000000
-# setopt INC_APPEND_HISTORY
-# export HISTTIMEFORMAT="[%F %T] "
-# setopt EXTENDED_HISTORY
-# setopt HIST_FIND_NO_DUPS
+export TZ=Europe/Dublin
 
 export PATH="/Users/aherna/.docker/bin/:$PATH"
 #export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -55,47 +47,3 @@ export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 export PATH="/opt/homebrew/opt/tcl-tk/bin:$PATH"
 
-# GSM Keys
-export GSM_TEST_CERT=~/certs/gsm-test/aherna-cert.cer
-export GSM_TEST_KEY=~/certs/gsm-test/aherna-private-key.cer
-
-export K8_CA_DATA=~/certs/gsm-test/k8-ca.cer
-export K8_CERT_DATA=~/certs/gsm-test/k8-cca.cer
-export K8_KEY_DATA=~/certs/gsm-test/k8-cka.cer
-
-export GSM_NONPROD_CERT=~/certs/gsm-preprod/aherna-cert.cer
-export GSM_NONPROD_KEY=~/certs/gsm-preprod/aherna-private-key.cer
-
-export GSM_PROD_CERT=~/certs/gsm-prod/aherna-cert.cer
-export GSM_PROD_KEY=~/certs/gsm-prod/aherna-private-key.cer
-
-# Logging infra certs
-export LI_TEST_US_CERT=~/certs/logging-infra/test/us-west-2/aherna-cert.cer
-export LI_TEST_US_KEY=~/certs/logging-infra/test/us-west-2/aherna-private-key.pem
-
-export LI_TEST_EU_CERT=~/certs/logging-infra/test/eu-west-1/aherna-cert.pem
-export LI_TEST_EU_KEY=~/certs/logging-infra/test/eu-west-1/aherna-private-key.pem
-
-export LI_PREPROD_US_CERT=~/certs/logging-infra/preprod/us-west-2/aherna-cert.cer
-export LI_PREPROD_US_KEY=~/certs/logging-infra/preprod/us-west-2/aherna-private-key.pem
-
-export LI_PREPROD_EU_CERT=~/certs/logging-infra/preprod/eu-west-1/aherna-cert.pem
-export LI_PREPROD_EU_KEY=~/certs/logging-infra/preprod/eu-west-1/aherna-private-key.pem
-
-export LI_PROD_US_CERT=~/certs/logging-infra/prod/us-west-2/aherna-cert.cer
-export LI_PROD_US_KEY=~/certs/logging-infra/prod/us-west-2/aherna-private-key.pem
-
-export LI_PROD_EU_CERT=~/certs/logging-infra/prod/eu-west-1/aherna-cert.pem
-export LI_PROD_EU_KEY=~/certs/logging-infra/prod/eu-west-1/aherna-private-key.pem
-
-export NETBOX_NONPROD_TOKEN="2aa3b4d2305deb33fa6799a1d0c6dd8c7416a9e7"
-
-# AWS Keypairs
-export LAB_KP=~/certs/kp-playground-1.cer
-
-export APPS_TEST_KP=~/certs/aherna-kp-apps-test.cer
-export APPS_PREPROD_KP=~/certs/aherna-kp-apps-preprod.cer
-export APPS_PROD_KP=~/certs/aherna-kp-apps-prod.cer
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
