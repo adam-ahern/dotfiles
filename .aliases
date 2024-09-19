@@ -147,7 +147,6 @@ alias reload="exec ${SHELL} -l"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-
 alias orion="ssh -i ~/.ssh/kp-327841341725.pem ubuntu@34.239.27.122"
 alias k3-master='ssh -i ~/.ssh/kp-327841341725.pem ubuntu@54.235.23.189'
 alias create-venv="python3 -m venv .venv"
