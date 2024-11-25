@@ -1,0 +1,36 @@
+Host gitlab.eng.vmware.com
+	IdentityFile ~/.ssh/id_rsa
+
+Host github.gwd.broadcom.net
+	IdentityFile ~/.ssh/avgo-broadcom
+	User aa000650
+
+Host vcf-csp.acc.broadcom.net lpdvcsp0*.acc.broadcom.net
+    User aa000650
+    IdentityFile ~/.ssh/script_server
+
+Host gitlab.com
+	IdentityFile ~/.ssh/gitlab-personal
+
+Host github.com
+	IdentityFile ~/.ssh/github-personal
+
+  Host *.tp-p-us-w-2 teleport-nlb.vmware-prod.net vco* vcg*
+    UserKnownHostsFile "/Users/aherna/.tsh/known_hosts"
+    IdentityFile "/Users/aherna/.tsh/keys/teleport.vmware-prod.net/aherna@vmware.com"
+    CertificateFile "/Users/aherna/.tsh/keys/teleport.vmware-prod.net/aherna@vmware.com-ssh/tp-p-us-w-2-cert.pub"
+    PubkeyAcceptedKeyTypes +ssh-rsa-cert-v01@openssh.com
+
+# Flags for all tp-p-us-w-2 hosts except the proxy
+Host *.tp-p-us-w-2 !teleport-nlb.vmware-prod.net
+    Port 3022
+    ProxyCommand "/usr/local/bin/tsh" proxy ssh --cluster=tp-p-us-w-2 --proxy=teleport-nlb.vmware-prod.net %r@%h:%p
+
+Host jumpbox
+    Hostname 10.80.12.166
+    User adam
+
+Host thinkpad
+    Hostname thinkpad.beardie-triceratops.ts.net
+    User adam
+    IdentityFile ~/.ssh/thinkpad
