@@ -9,12 +9,6 @@ Host vcf-csp.acc.broadcom.net lpdvcsp0*.acc.broadcom.net
     User aa000650
     IdentityFile ~/.ssh/script_server
 
-Host gitlab.com
-	IdentityFile ~/.ssh/gitlab-personal
-
-Host github.com
-	IdentityFile ~/.ssh/github-personal
-
   Host *.tp-p-us-w-2 teleport-nlb.vmware-prod.net vco* vcg*
     UserKnownHostsFile "/Users/aherna/.tsh/known_hosts"
     IdentityFile "/Users/aherna/.tsh/keys/teleport.vmware-prod.net/aherna@vmware.com"
