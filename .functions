@@ -188,8 +188,3 @@ function getcertnames() {
 		return 1;
 	fi;
 }
-
-
-function filter() {
-    rg -lz "$1" | xargs lnav -c ":filter-in $1"
-}
