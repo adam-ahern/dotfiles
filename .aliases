@@ -147,23 +147,6 @@ alias reload="exec ${SHELL} -l"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-alias orion="ssh -i ~/.ssh/kp-327841341725.pem ubuntu@34.239.27.122"
-alias k3-master='ssh -i ~/.ssh/kp-327841341725.pem ubuntu@54.235.23.189'
-alias create-venv="python3 -m venv .venv"
-alias venv="source .venv/bin/activate"
-alias jnb="jupyter notebook"
-alias poetry-bump="poetry version patch && poetry publish -r edgeops --build && pip install --upgrade edgeopsdk"
-alias tnpl='tsh login --proxy=teleport.vmware-nonprod.net:443 --auth=Okta'
-alias tpl='tsh login --proxy=teleport.vmware-prod.net:443 --auth=Okta'
-alias tssh='tsh ssh'
-alias tub='tsh ssh ubh1-us1'
-alias tubp='tsh ssh -D 9999 ubh1-us1'
-alias poetry='PYTHONPATH=$(pwd) poetry'
-alias pytest='pwd && PYTHONPATH=$(pwd)/src pytest'
-alias cyberark=~/cyberark-alias
-alias playroom='rdp 10.226.104.88'
-alias rot13='tr "A-Za-z" "N-ZA-Mn-za-m"'
-
 #########
 #  GIT  #
 #########
@@ -175,4 +158,17 @@ alias gpor="git pull origin \$(git symbolic-ref refs/remotes/origin/HEAD | sed '
 alias ggpull='git pull origin "$(git rev-parse --abbrev-ref HEAD)"'
 alias ggpush='git push origin "$(git rev-parse --abbrev-ref HEAD)"'
 
+####################
+#  DOCKER COMPOSE  #
+####################
+alias dcud="docker-compose up -d"
+alias dcd="docker-compose down"
+alias dcr="docker-compose restart"
+
+####################
+#  VMW CUTS        #
+####################
+alias hlog='cd var/run/log'
+alias vclog='cd var/log/vmware'
+alias sr='cdsr'
 alias csp='ssh vcf-csp.acc.broadcom.net'
