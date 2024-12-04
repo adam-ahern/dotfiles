@@ -2,7 +2,7 @@
 export PATH="$HOME/bin:$PATH";
 
 # Show the cursor
-# echo -e "\033[?25h"
+echo -e "\033[?25h"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
